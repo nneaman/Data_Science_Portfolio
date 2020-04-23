@@ -1,0 +1,19 @@
+# This program will populate a list based on user input. 
+
+temperature = list();
+while(1):
+    temp=int(input("Please enter a temperature value:"))
+    if(temp == 5):
+        break
+    else:
+        temperature.append(temp)
+largest = temperature[0]
+smallest = temperature[0]
+for w in temperature:
+    if(w > largest):
+        largest = w
+    if(w < smallest):
+        smallest = w
+print("Your largest value is:", largest)
+print("Your smallest value is:", smallest)
+print("Number of values entered:", len(temperature))
