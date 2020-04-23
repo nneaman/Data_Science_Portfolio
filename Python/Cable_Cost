@@ -4,7 +4,7 @@ print("Welcome!")
 companyname = input("What is your company's name?")
 feet = input("How many feet of fiber optic cable will you need?")
 supply_cost = 0.87
-quote = int(feet) * supply_cost            # Converting string to integer
+quote = int(feet) * supply_cost       
 
 print("Your estimated cost is $",quote)
 
