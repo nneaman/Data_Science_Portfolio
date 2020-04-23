@@ -1,0 +1,16 @@
+# This program calculates a prices based on user input
+
+print("Welcome!")
+companyname = input("What is your company's name?")
+feet = input("How many feet of fiber optic cable will you need?")
+supply_cost = 0.87
+quote = int(feet) * supply_cost            # Converting string to integer
+
+print("Your estimated cost is $",quote)
+
+print("Here is your invoice")
+print("Company Name:",companyname)
+print("Number of feet:",feet, "feet")
+print("Calculated Cost: $",quote)
+print("Total Cost: $", quote)
+print("Thank you for your order")
