@@ -1,5 +1,5 @@
 """ 
-This program connects to a wether API and returns weather details based on zip or city entered by the user
+This program connects to a weather API and returns live weather details based on zip or city entered by the user
 """
 
 
