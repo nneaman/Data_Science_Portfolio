@@ -1,0 +1,74 @@
+""" 
+This program connects to a wether API and returns weather details based on zip or city entered by the user
+"""
+
+
+
+import requests
+import json
+
+api_key = 'fa197d2263cb588c0d590ceb1d47ff69'
+country = 'us'
+
+print("Welcome to the weather forecast program!")
+
+def zip_weather():
+    zip = input("Please list the 5-digit zip code: ")
+    if zip.isalpha():                                               # Checking to make sure data is correct
+        print("That is an invalid input. Input must be numerical characters only")
+    request_url = ("https://api.openweathermap.org/data/2.5/weather?zip={},{}&appid={}&units=imperial").format(zip, country, api_key)
+    request = requests.get(request_url)
+    try:
+        request.status_code = '200'
+        print("Connection to API is Successful!")                     # Successful API connection message
+    except:
+        print("There was an issue with the connection")
+        print("Connection Error Code: ", request.status_code)        # Delivers HTTP error code
+    data = json.loads(request.text)
+    print('Current Weather')                                         # Printing results
+    print('City Name:', data['name'])
+    print('Current Temp:', data['main']['temp'])
+    print('High Temp:', data['main']['temp_max'])
+    print('Low Temp:', data['main']['temp_min'])
+    print('Humidity:', data['main']['humidity'])
+    print('Cloud Cover:', data['clouds']['all'], '%')
+
+def city_weather():
+    city = input("Please list the city: ")
+    state = input("Please list the 2 character state code: ")
+    if city.isdigit():                                         # Checking to make sure data is correct format
+        print("This is an invalid input. Must be alphabetical characters only")
+    elif state.isdigit():
+        print("This is an invalid input. Must be alphabetical characters only")
+    request_url = 'https://api.openweathermap.org/data/2.5/weather?q={},{},{}&appid={}&units=imperial'.format(city, state, country, api_key)
+    request = requests.get(request_url)
+    try:
+        request.status_code = '200'
+        print("Connection to API is Successful!")                   # Successful API connection message
+    except:
+        print("There was an issue with the connection")
+        print("Connection Error Code: ", request.status_code)     # Delivers HTTP error code
+    data = json.loads(request.text)
+    print('Current Weather')                                      # Printing results
+    print('City Name:', data['name'])
+    print('Current Temp:', data['main']['temp'])
+    print('High Temp:', data['main']['temp_max'])
+    print('Low Temp:', data['main']['temp_min'])
+    print('Humidity:', data['main']['humidity'])
+    print('Cloud Cover:', data['clouds']['all'], '%')
+
+def main():
+ while True:
+    input1 = input("Would you like a forecast by US City or zip code? Enter 1 for city, 2 for zip, or 0 to exit: ")
+    if input1 == '2':
+        zip_weather()                                 # Pulling zip code data
+    elif input1 == '1':
+        city_weather()                                 # Pulling city data
+    elif input1 == '0':
+        print("You have left the program. Bye!")     # Exit message
+        break
+    else:
+        print("Invalid Response. Please try again")    # Error message
+
+if __name__== "__main__":
+    main()
