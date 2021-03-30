@@ -1,0 +1,1 @@
+The purpose of this repository is to demonstrate various area in Data Science that I have experience working in. The 3 placeholder files will eventually be replaced with the 3 projects I am working on in my Applied Data Science course. 
